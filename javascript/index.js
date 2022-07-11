@@ -1,5 +1,3 @@
-let passwordOneInput = document.getElementById('password-one-input');
-let passwordTwoInput = document.getElementById('password-two-input');
 const characters = [
   'A',
   'B',
@@ -93,13 +91,22 @@ const characters = [
   '?',
   '/',
 ];
+let passwordOneInput = document.getElementById('password-one-input');
+let passwordTwoInput = document.getElementById('password-two-input');
+let passwordLength = 12;
+function getRandomCharacter() {
+  let randomChar = Math.floor(Math.random() * characters.length);
+  return characters[randomChar];
+}
 function generate() {
-  let randomCharacter = Math.floor(Math.random() * 15);
-  let secondRandomCharacter = Math.floor(Math.random() * 15);
-  for (i = 0; i < characters.length; i++) {
-    passwordOneInput.textContent = characters[randomCharacter];
+  let randomPassword = '';
+  for (let i = 0; i < passwordLength; i++) {
+    randomPassword += getRandomCharacter();
   }
-  for (i = 0; i < characters.length; i++) {
-    passwordTwoInput.textContent = characters[secondRandomCharacter];
+  passwordOneInput.textContent = randomPassword;
+  let secondRandomPassword = '';
+  for (let i = 0; i < passwordLength; i++) {
+    secondRandomPassword += getRandomCharacter();
   }
+  passwordTwoInput.textContent = secondRandomPassword;
 }
